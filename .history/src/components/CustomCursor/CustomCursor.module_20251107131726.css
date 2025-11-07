@@ -1,0 +1,276 @@
+/* Ocultar cursor del sistema en TODA la página */
+body * {
+  cursor: none !important;
+}
+
+/* EXCEPTO en el traductor - permitir cursor normal */
+#translate-widget-container,
+#translate-widget-container *,
+#google_translate_element,
+#google_translate_element *,
+.goog-te-combo,
+.goog-te-combo *,
+.goog-te-menu-value,
+.goog-te-menu-value *,
+.goog-te-menu2,
+.goog-te-menu2 *,
+select.goog-te-combo,
+.skiptranslate,
+.skiptranslate * {
+  cursor: pointer !important;
+}
+
+/* Cursor principal - GRANDE Y VISIBLE */
+.cursor {
+  position: fixed;
+  width: 80px;
+  height: 80px;
+  pointer-events: none;
+  z-index: 99999; /* Reducido para estar debajo del traductor */
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Anillo exterior */
+.cursorRingOuter {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 3px solid rgba(74, 144, 226, 0.6);
+  border-radius: 50%;
+  animation: rotateRing 4s linear infinite, pulseOuter 2s ease-in-out infinite;
+  box-shadow: 
+    0 0 30px rgba(74, 144, 226, 0.8),
+    inset 0 0 30px rgba(74, 144, 226, 0.4);
+}
+
+/* Anillo medio */
+.cursorRingMiddle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70%;
+  height: 70%;
+  transform: translate(-50%, -50%);
+  border: 2px solid rgba(80, 201, 255, 0.7);
+  border-radius: 50%;
+  animation: rotateRing 3s linear infinite reverse, pulseMiddle 2s ease-in-out infinite;
+  box-shadow: 
+    0 0 25px rgba(80, 201, 255, 0.9),
+    inset 0 0 25px rgba(80, 201, 255, 0.5);
+}
+
+/* Anillo interno */
+.cursorRingInner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70%;
+  height: 70%;
+  transform: translate(-50%, -50%);
+  border: 2px solid rgba(122, 184, 245, 0.8);
+  border-radius: 50%;
+  animation: rotateRing 2s linear infinite, pulseInner 2s ease-in-out infinite;
+  box-shadow: 
+    0 0 20px rgba(122, 184, 245, 1),
+    inset 0 0 20px rgba(122, 184, 245, 0.6);
+}
+
+/* Núcleo central brillante */
+.cursorCore {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, #ffffff 0%, #50c9ff 50%, #4a90e2 100%);
+  border-radius: 50%;
+  box-shadow: 
+    0 0 20px rgba(255, 255, 255, 1),
+    0 0 40px rgba(80, 201, 255, 0.8),
+    0 0 60px rgba(74, 144, 226, 0.6);
+  animation: coreGlow 1.5s ease-in-out infinite;
+}
+
+/* Puntos orbitales */
+.orbitDot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle, #50c9ff, #4a90e2);
+  border-radius: 50%;
+  transform-origin: 35px 0;
+  animation: orbit 3s linear infinite;
+  animation-delay: var(--delay);
+  box-shadow: 
+    0 0 15px rgba(80, 201, 255, 1),
+    0 0 25px rgba(74, 144, 226, 0.8);
+}
+
+/* Trail de partículas */
+.trailDot {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle, rgba(80, 201, 255, 1) 0%, rgba(74, 144, 226, 0.5) 50%, transparent 100%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998; /* Reducido */
+  box-shadow: 0 0 15px rgba(80, 201, 255, 0.8);
+}
+
+/* Estado hover sobre elementos clickeables */
+.cursorPointer {
+  transform: translate(-50%, -50%) scale(1.3);
+}
+
+.cursorPointer .cursorRingOuter {
+  border-color: rgba(80, 201, 255, 0.9);
+  animation: rotateRing 2s linear infinite, pulseActive 0.8s ease-in-out infinite;
+  box-shadow: 
+    0 0 50px rgba(80, 201, 255, 1),
+    inset 0 0 40px rgba(80, 201, 255, 0.6);
+}
+
+.cursorPointer .cursorCore {
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle, #ffffff 0%, #50c9ff 40%, #4a90e2 100%);
+  box-shadow: 
+    0 0 30px rgba(255, 255, 255, 1),
+    0 0 50px rgba(80, 201, 255, 1),
+    0 0 80px rgba(74, 144, 226, 0.8);
+}
+
+/* Estado clicking */
+.cursorClicking {
+  transform: translate(-50%, -50%) scale(0.85);
+}
+
+.cursorClicking .cursorRingOuter {
+  border-width: 5px;
+  box-shadow: 
+    0 0 60px rgba(80, 201, 255, 1),
+    inset 0 0 50px rgba(80, 201, 255, 0.8);
+}
+
+/* Ripple effect al hacer click */
+.ripple {
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  transform: translate(-50%, -50%);
+  border: 3px solid rgba(80, 201, 255, 0.8);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9997; /* Reducido */
+  animation: rippleExpand 0.6s ease-out forwards;
+  box-shadow: 0 0 30px rgba(80, 201, 255, 0.8);
+}
+
+/* Animaciones */
+@keyframes rotateRing {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulseOuter {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+@keyframes pulseMiddle {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.08);
+    opacity: 1;
+  }
+}
+
+@keyframes pulseInner {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 1;
+  }
+}
+
+@keyframes coreGlow {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow: 
+      0 0 20px rgba(255, 255, 255, 1),
+      0 0 40px rgba(80, 201, 255, 0.8),
+      0 0 60px rgba(74, 144, 226, 0.6);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    box-shadow: 
+      0 0 30px rgba(255, 255, 255, 1),
+      0 0 60px rgba(80, 201, 255, 1),
+      0 0 90px rgba(74, 144, 226, 0.8);
+  }
+}
+
+@keyframes orbit {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) translateX(35px) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg) translateX(35px) rotate(-360deg);
+  }
+}
+
+@keyframes pulseActive {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+@keyframes rippleExpand {
+  0% {
+    width: 50px;
+    height: 50px;
+    opacity: 1;
+  }
+  100% {
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+  }
+}
+
+/* Responsive - Ocultar en tablets y móviles */
+@media (max-width: 1024px) {
+  .cursor,
+  .trailDot,
+  .ripple {
+    display: none !important;
+  }
+  
+  body * {
+    cursor: auto !important;
+  }
+}

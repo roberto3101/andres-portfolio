@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Portafolio de Andres Alvaro Sanchez Trujillo - Desarrollador Full Stack Junior" />
+    <meta name="keywords" content="desarrollador, fullstack, java, spring boot, react, portfolio" />
+    <meta name="author" content="Andres Alvaro Sanchez Trujillo" />
+    <title>Andres Sanchez - Desarrollador Full Stack</title>
+    
+    <!-- Google Translate Script -->
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+          pageLanguage: 'es',
+          includedLanguages: 'en,es,pt,fr,de,it',
+          layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+          autoDisplay: false
+        }, 'google_translate_element');
+      }
+      
+      // Función global para cambiar idioma desde React
+      window.changeLanguage = function(langCode) {
+        var select = document.querySelector('.goog-te-combo');
+        if (select) {
+          select.value = langCode;
+          select.dispatchEvent(new Event('change'));
+        }
+      };
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    
+    <style>
+      /* OCULTAR completamente el widget de Google */
+      #google_translate_element {
+        position: fixed;
+        top: -9999px;
+        left: -9999px;
+        visibility: hidden !important;
+        display: none !important;
+      }
+      
+      /* Ocultar el banner de Google Translate */
+      .goog-te-banner-frame {
+        display: none !important;
+      }
+      
+      body {
+        top: 0 !important;
+        position: static !important;
+      }
+      
+      /* Ocultar la barra superior molesta */
+      .skiptranslate {
+        display: none !important;
+      }
+      
+      body > .skiptranslate {
+        display: none !important;
+      }
+      
+      iframe.skiptranslate {
+        display: none !important;
+      }
+      
+      body {
+        top: 0 !important;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Widget de Google Translate (OCULTO, pero funcional) -->
+    <div id="google_translate_element"></div>
+    
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

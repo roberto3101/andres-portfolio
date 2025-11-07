@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --primary-color: #4a90e2;
+  --secondary-color: #50c9ff;
+  --dark-bg: #0f0c29;
+  --text-light: #b8c5d6;
+  --text-white: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #0f0c29;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Selection personalizado */
+::selection {
+  background: rgba(74, 144, 226, 0.3);
+  color: #fff;
+}
+
+::-moz-selection {
+  background: rgba(74, 144, 226, 0.3);
+  color: #fff;
+}
+
+/* ↓ Empuja el traductor por debajo de todo */
+.goog-te-banner-frame,
+.goog-te-menu-frame,
+.goog-te-balloon-frame,
+#goog-gt-tt,
+.goog-tooltip,
+.goog-tooltip div,
+#google_translate_element,
+.skiptranslate {
+  z-index: 1 !important;
+  pointer-events: auto !important;
+  position: relative !important;
+}

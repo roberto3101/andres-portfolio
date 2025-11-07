@@ -1,0 +1,173 @@
+.about {
+  min-height: 100vh;
+  padding: 6rem 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #fff;
+  position: relative;
+}
+
+.sectionTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(135deg, #4a90e2, #50c9ff);
+  border-radius: 2px;
+}
+
+.content {
+  display: grid;
+  gap: 2rem;
+}
+
+.infoCard, .educationCard, .interestsCard {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.infoCard:hover, .educationCard:hover, .interestsCard:hover {
+  transform: translateY(-5px);
+}
+
+.infoCard h3, .educationCard h3, .interestsCard h3 {
+  font-size: 1.5rem;
+  color: #4a90e2;
+  margin-bottom: 1.5rem;
+}
+
+.description {
+  color: #b8c5d6;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.personalDetails {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.detail {
+  display: flex;
+  gap: 0.5rem;
+  color: #fff;
+  padding: 0.75rem;
+  background: rgba(74, 144, 226, 0.1);
+  border-radius: 10px;
+}
+
+.detail strong {
+  color: #4a90e2;
+}
+
+.educationList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.educationItem {
+  padding: 1.5rem;
+  background: rgba(74, 144, 226, 0.05);
+  border-left: 4px solid #4a90e2;
+  border-radius: 10px;
+}
+
+.eduHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.eduHeader h4 {
+  color: #fff;
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.period {
+  color: #4a90e2;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.degree {
+  color: #b8c5d6;
+  margin: 0.5rem 0;
+}
+
+.location {
+  color: #8899aa;
+  margin: 0.3rem 0;
+  font-size: 0.9rem;
+}
+
+.status {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.3rem 1rem;
+  background: rgba(74, 144, 226, 0.2);
+  color: #50c9ff;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.interestsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.interestTag {
+  padding: 0.75rem 1.5rem;
+  background: rgba(74, 144, 226, 0.15);
+  color: #50c9ff;
+  border: 1px solid rgba(74, 144, 226, 0.3);
+  border-radius: 25px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.interestTag:hover {
+  background: #4a90e2;
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+  .sectionTitle {
+    font-size: 2rem;
+  }
+
+  .infoCard, .educationCard, .interestsCard {
+    padding: 1.5rem;
+  }
+
+  .personalDetails {
+    grid-template-columns: 1fr;
+  }
+}

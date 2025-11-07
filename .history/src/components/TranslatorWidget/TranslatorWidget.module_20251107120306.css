@@ -1,0 +1,26 @@
+.loading {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  color: #50c9ff;
+  font-size: 0.8rem;
+  animation: blink 1s infinite;
+}
+
+.loadingText {
+  color: #4a90e2;
+  text-align: center;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.langButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

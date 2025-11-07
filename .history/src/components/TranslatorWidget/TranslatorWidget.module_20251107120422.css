@@ -1,0 +1,303 @@
+.floatingWidget {
+  position: fixed;
+  z-index: 9999;
+  user-select: none;
+  transition: all 0.3s ease;
+}
+
+.floatingWidget:not(.open) {
+  cursor: grab;
+}
+
+.floatingWidget.dragging {
+  cursor: grabbing !important;
+  transition: none;
+}
+
+.floatingWidget.dragging * {
+  cursor: grabbing !important;
+  pointer-events: none;
+}
+
+.nebula {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150px;
+  height: 150px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.nebulaCore {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, rgba(74, 144, 226, 0.4) 0%, rgba(80, 201, 255, 0.2) 50%, transparent 100%);
+  border-radius: 50%;
+  animation: nebulaRotate 20s linear infinite, nebulaPulse 3s ease-in-out infinite;
+  filter: blur(10px);
+}
+
+.nebulaGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(80, 201, 255, 0.2) 0%, rgba(74, 144, 226, 0.1) 40%, transparent 70%);
+  border-radius: 50%;
+  animation: nebulaRotate 30s linear infinite reverse, nebulaPulse 4s ease-in-out infinite;
+  filter: blur(15px);
+}
+
+.mainButton {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: rgba(15, 12, 41, 0.9);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(74, 144, 226, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 0 30px rgba(74, 144, 226, 0.4),
+    inset 0 0 20px rgba(74, 144, 226, 0.2);
+  z-index: 1;
+}
+
+.mainButton:hover {
+  transform: scale(1.1);
+  border-color: rgba(80, 201, 255, 0.8);
+  box-shadow: 
+    0 0 40px rgba(80, 201, 255, 0.6),
+    inset 0 0 30px rgba(80, 201, 255, 0.3);
+}
+
+.icon {
+  font-size: 1.5rem;
+  color: #4a90e2;
+  pointer-events: none;
+}
+
+.currentFlag {
+  font-size: 1.2rem;
+  pointer-events: none;
+}
+
+.languagePanel {
+  position: relative;
+  background: rgba(15, 12, 41, 0.95);
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(74, 144, 226, 0.5);
+  border-radius: 20px;
+  padding: 1rem;
+  width: 280px;
+  max-height: 360px;
+  box-shadow: 
+    0 10px 50px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(74, 144, 226, 0.3);
+  animation: panelFadeIn 0.3s ease-out;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  cursor: grab;
+}
+
+.header:active {
+  cursor: grabbing;
+}
+
+.dragHandle {
+  color: rgba(74, 144, 226, 0.5);
+  font-size: 1.2rem;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  cursor: grab;
+}
+
+.dragHandle:active {
+  cursor: grabbing;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  color: #4a90e2;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.closeButton:hover {
+  background: rgba(74, 144, 226, 0.2);
+  color: #50c9ff;
+  transform: rotate(90deg);
+}
+
+.panelTitle {
+  color: #4a90e2;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.languageList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+  flex: 1;
+}
+
+.languageList::-webkit-scrollbar {
+  width: 6px;
+}
+
+.languageList::-webkit-scrollbar-track {
+  background: rgba(74, 144, 226, 0.1);
+  border-radius: 10px;
+}
+
+.languageList::-webkit-scrollbar-thumb {
+  background: rgba(74, 144, 226, 0.5);
+  border-radius: 10px;
+}
+
+.languageList::-webkit-scrollbar-thumb:hover {
+  background: rgba(74, 144, 226, 0.7);
+}
+
+.langButton {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem 1rem;
+  background: rgba(74, 144, 226, 0.1);
+  border: 1px solid rgba(74, 144, 226, 0.3);
+  border-radius: 10px;
+  color: #b8c5d6;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  position: relative;
+}
+
+.langButton:hover {
+  background: rgba(74, 144, 226, 0.2);
+  border-color: rgba(74, 144, 226, 0.5);
+  transform: translateX(5px);
+}
+
+.langButton.active {
+  background: rgba(74, 144, 226, 0.3);
+  border-color: #4a90e2;
+  color: #50c9ff;
+  font-weight: 600;
+}
+
+.flag {
+  font-size: 1.5rem;
+}
+
+.langName {
+  flex: 1;
+}
+
+.checkMark {
+  color: #50c9ff;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+@keyframes nebulaRotate {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes nebulaPulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+@keyframes panelFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Mostrar solo en desktop */
+@media (max-width: 1024px) {
+  .floatingWidget {
+    display: none;
+  }
+}
+
+.loading {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  color: #50c9ff;
+  font-size: 0.8rem;
+  animation: blink 1s infinite;
+}
+
+.loadingText {
+  color: #4a90e2;
+  text-align: center;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.langButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
