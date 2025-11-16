@@ -1,4 +1,4 @@
-import { FaGithub, FaLinkedin, FaEnvelope, FaWhatsapp, FaDownload } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaWhatsapp } from 'react-icons/fa';
 import { personalInfo } from '../../data/portfolioData';
 import styles from './Hero.module.css';
 
@@ -25,9 +25,6 @@ const Hero = () => {
             </a>
             <a href="https://wa.me/51924087168" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
               <FaWhatsapp />
-            </a>
-            <a href="/andresCV.pdf" download="Andres_CV.pdf" className={styles.socialLink}>
-              <FaDownload />
             </a>
           </div>
 

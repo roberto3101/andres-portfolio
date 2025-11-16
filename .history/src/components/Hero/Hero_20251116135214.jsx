@@ -49,3 +49,10 @@ const Hero = () => {
 };
 
 export default Hero;
+```
+
+**Pasos para agregar el CV:**
+
+1. **Coloca el PDF aquí:**
+```
+   C:\Users\user\Desktop\ANDRES-PORTFOLIO\public\andresCV.pdf

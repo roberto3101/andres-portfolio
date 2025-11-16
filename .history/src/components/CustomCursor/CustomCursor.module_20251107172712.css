@@ -1,0 +1,283 @@
+/* ========================================
+   SOLUCIÓN: Solo aplicar cursor:none a elementos específicos
+   NO al body ni a divs genéricos
+   ======================================== */
+
+/* Aplicar cursor none SOLO a estos elementos específicos */
+a:not(#translate-widget-container *):not(.goog-te-menu2 *),
+button:not(#translate-widget-container *):not(.goog-te-menu2 *):not(.goog-te-combo),
+input:not(#translate-widget-container *):not(.goog-te-menu2 *):not(.goog-te-combo),
+textarea:not(#translate-widget-container *):not(.goog-te-menu2 *),
+p:not(#translate-widget-container *),
+h1:not(#translate-widget-container *),
+h2:not(#translate-widget-container *),
+h3:not(#translate-widget-container *),
+h4:not(#translate-widget-container *),
+h5:not(#translate-widget-container *),
+h6:not(#translate-widget-container *),
+span:not(#translate-widget-container *):not(.goog-te-menu2 *),
+nav:not(#translate-widget-container *),
+section:not(#translate-widget-container *),
+article:not(#translate-widget-container *),
+header:not(#translate-widget-container *),
+footer:not(#translate-widget-container *) {
+  cursor: none !important;
+}
+
+/* FORZAR cursor pointer en TODO el traductor y sus elementos */
+#translate-widget-container,
+#translate-widget-container *,
+#google_translate_element,
+#google_translate_element *,
+.goog-te-combo,
+.goog-te-combo *,
+.goog-te-gadget,
+.goog-te-gadget *,
+.goog-te-menu-value,
+.goog-te-menu-value *,
+.goog-te-menu2,
+.goog-te-menu2 *,
+.goog-te-menu2-item,
+.goog-te-menu2-item *,
+select.goog-te-combo,
+option,
+.skiptranslate,
+.skiptranslate *,
+iframe.skiptranslate,
+.goog-te-banner-frame,
+.goog-te-balloon,
+body > .skiptranslate {
+  cursor: pointer !important;
+  pointer-events: auto !important;
+}
+
+/* Cursor principal - TOTALMENTE sin pointer-events */
+.cursor {
+  position: fixed;
+  width: 80px;
+  height: 80px;
+  pointer-events: none !important;
+  z-index: 99999;
+  left: 0;
+  top: 0;
+  transform: translate(-50%, -50%);
+  transition: none;
+}
+
+/* Anillo exterior */
+.cursorRingOuter {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 3px solid rgba(74, 144, 226, 0.6);
+  border-radius: 50%;
+  animation: rotateRing 4s linear infinite, pulseOuter 2s ease-in-out infinite;
+  box-shadow: 
+    0 0 30px rgba(74, 144, 226, 0.8),
+    inset 0 0 30px rgba(74, 144, 226, 0.4);
+  pointer-events: none !important;
+}
+
+/* Anillo medio */
+.cursorRingMiddle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70%;
+  height: 70%;
+  transform: translate(-50%, -50%);
+  border: 2px solid rgba(80, 201, 255, 0.7);
+  border-radius: 50%;
+  animation: rotateRing 3s linear infinite reverse, pulseMiddle 2s ease-in-out infinite;
+  box-shadow: 
+    0 0 25px rgba(80, 201, 255, 0.9),
+    inset 0 0 25px rgba(80, 201, 255, 0.5);
+  pointer-events: none !important;
+}
+
+/* Anillo interno */
+.cursorRingInner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70%;
+  height: 70%;
+  transform: translate(-50%, -50%);
+  border: 2px solid rgba(122, 184, 245, 0.8);
+  border-radius: 50%;
+  animation: rotateRing 2s linear infinite, pulseInner 2s ease-in-out infinite;
+  box-shadow: 
+    0 0 20px rgba(122, 184, 245, 1),
+    inset 0 0 20px rgba(122, 184, 245, 0.6);
+  pointer-events: none !important;
+}
+
+/* Núcleo central brillante */
+.cursorCore {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, #ffffff 0%, #50c9ff 50%, #4a90e2 100%);
+  border-radius: 50%;
+  box-shadow: 
+    0 0 20px rgba(255, 255, 255, 1),
+    0 0 40px rgba(80, 201, 255, 0.8),
+    0 0 60px rgba(74, 144, 226, 0.6);
+  animation: coreGlow 1.5s ease-in-out infinite;
+  pointer-events: none !important;
+}
+
+/* Puntos orbitales */
+.orbitDot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle, #50c9ff, #4a90e2);
+  border-radius: 50%;
+  transform-origin: 35px 0;
+  animation: orbit 3s linear infinite;
+  animation-delay: var(--delay);
+  box-shadow: 
+    0 0 15px rgba(80, 201, 255, 1),
+    0 0 25px rgba(74, 144, 226, 0.8);
+  pointer-events: none !important;
+}
+
+/* Partículas */
+.particle {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle, #50c9ff 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none !important;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  animation: particleFade 1s ease-out forwards;
+}
+
+/* Ocultar cursor */
+.cursorHidden {
+  opacity: 0;
+}
+
+/* Estado hover sobre elementos clickeables */
+.cursorPointer {
+  transform: translate(-50%, -50%) scale(1.3);
+}
+
+.cursorPointer .cursorRingOuter {
+  border-color: rgba(80, 201, 255, 0.9);
+  animation: rotateRing 2s linear infinite, pulseActive 0.8s ease-in-out infinite;
+  box-shadow: 
+    0 0 50px rgba(80, 201, 255, 1),
+    inset 0 0 40px rgba(80, 201, 255, 0.6);
+}
+
+.cursorPointer .cursorCore {
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle, #ffffff 0%, #50c9ff 40%, #4a90e2 100%);
+  box-shadow: 
+    0 0 30px rgba(255, 255, 255, 1),
+    0 0 50px rgba(80, 201, 255, 1),
+    0 0 80px rgba(74, 144, 226, 0.8);
+}
+
+/* Animaciones */
+@keyframes rotateRing {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulseOuter {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+@keyframes pulseMiddle {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.08);
+    opacity: 1;
+  }
+}
+
+@keyframes pulseInner {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 1;
+  }
+}
+
+@keyframes coreGlow {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow: 
+      0 0 20px rgba(255, 255, 255, 1),
+      0 0 40px rgba(80, 201, 255, 0.8),
+      0 0 60px rgba(74, 144, 226, 0.6);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    box-shadow: 
+      0 0 30px rgba(255, 255, 255, 1),
+      0 0 60px rgba(80, 201, 255, 1),
+      0 0 90px rgba(74, 144, 226, 0.8);
+  }
+}
+
+@keyframes orbit {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) translateX(35px) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg) translateX(35px) rotate(-360deg);
+  }
+}
+
+@keyframes pulseActive {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+@keyframes particleFade {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0) translateY(-30px);
+  }
+}
+
+/* Responsive - Ocultar en tablets y móviles */
+@media (max-width: 1024px) {
+  .cursor,
+  .particle {
+    display: none !important;
+  }
+  
+  * {
+    cursor: auto !important;
+  }
+}
